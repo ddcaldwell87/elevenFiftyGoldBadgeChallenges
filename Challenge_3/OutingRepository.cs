@@ -20,15 +20,12 @@ namespace Challenge_3
             _outingList.Add(events);
         }
 
-        public decimal CostAllOutings(decimal costOfEvent)
+        public decimal CostAllOutings(List<Outing> outingList)
         {
             decimal totalCost = 0;
-            foreach(var outing in _outingList)
+            foreach(var outing in outingList)
             {
-                if(costOfEvent == outing.CostofEvent)
-                {
-                    costOfEvent += totalCost;
-                }
+                totalCost += outing.CostofEvent;
             }
             return totalCost;
         }
@@ -40,7 +37,7 @@ namespace Challenge_3
             {
                 if(type == outing.Type)
                 {
-                    outing.CostofEvent += totalCost;
+                    totalCost += outing.CostofEvent;
                 }
             }
             return totalCost;
