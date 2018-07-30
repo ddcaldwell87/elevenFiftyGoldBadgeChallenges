@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace Challenge_4
 {
-    class Badge
+    public class Badge
     {
+        public Badge(Dictionary<string, List<string>> badges)
+        {
+            Badges = badges;
+        }
+
+        public Dictionary<string, List<string>> Badges { get; set; }
     }
 }
