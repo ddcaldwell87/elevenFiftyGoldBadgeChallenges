@@ -9,7 +9,7 @@ namespace Challenge_4
     class ProgramUI
     {
         private BadgeRepository _repo = new BadgeRepository();
-        private bool continueToRunMenu = true;
+        private bool continueToLoop = true;
 
         public void Run()
         {
@@ -35,7 +35,7 @@ namespace Challenge_4
         {
             ShowStartMenu();
             
-            while (continueToRunMenu)
+            while (continueToLoop)
             {
                 int choice = UserChoice();
 
@@ -45,13 +45,13 @@ namespace Challenge_4
                         AddBadge();
                         break;
                     case 2:
-                        EditBadge();
+                        //EditBadge();
                         break;
                     case 3:
-                        GetBadges();
+                        GetBadges(_repo.GetBadges());
                         break;
                     case 4:
-                        continueToRunMenu = false;
+                        continueToLoop = false;
                         break;
                     default:
                         RunStartMenu();
@@ -79,10 +79,31 @@ namespace Challenge_4
 
         private void AddBadge()
         {
-            Console.WriteLine("What is the number on the badge?");
+            Console.WriteLine("What is the badge number?");
             string badgeID = Console.ReadLine();
 
+            var doors = new List<string>();
 
+            while (continueToLoop)
+            {
+                Console.WriteLine("Add a door:");
+                string door = Console.ReadLine();
+                doors.Add(door);
+
+                Console.WriteLine("Add another door? (y/n)");
+                string answer = Console.ReadLine();
+
+                if (answer != "y")
+                    RunStartMenu();
+            }
+        }
+
+        private void GetBadges(Dictionary<string, List<string>> badges)
+        {
+            foreach(var badge in badges)
+            {
+                Console.WriteLine($"Badge Number: {badge.Key}\t Door Access: {badge.Value.ToString()}");
+            }
         }
     }
 }
