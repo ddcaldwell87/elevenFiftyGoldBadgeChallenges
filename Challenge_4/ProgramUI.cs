@@ -100,9 +100,10 @@ namespace Challenge_4
 
         private void GetBadges(Dictionary<string, List<string>> badges)
         {
-            foreach(var badge in badges)
+            foreach (var badge in badges)
             {
-                Console.WriteLine($"Badge Number: {badge.Key}\t Door Access: {badge.Value.ToString()}");
+                string stringedList = string.Join(", ", badge.Value);
+                Console.WriteLine($"Badge Number: {badge.Key}\t Door Access: {stringedList}");
             }
         }
     }
