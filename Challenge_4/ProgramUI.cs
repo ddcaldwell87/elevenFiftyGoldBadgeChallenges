@@ -46,7 +46,7 @@ namespace Challenge_4
                         AddBadge();
                         break;
                     case 2:
-                        //EditBadge();
+                        EditBadge(_repo.GetBadges());
                         break;
                     case 3:
                         GetBadges(_repo.GetBadges());
@@ -109,6 +109,30 @@ namespace Challenge_4
                 string stringedList = string.Join(", ", badge.Value);
                 Console.WriteLine($"Badge Number: {badge.Key}\t Door Access: {stringedList}");
             }
+
+            Console.WriteLine("1. Return to menu");
+            int choice = UserChoice();
+            if (choice == 1)
+                RunStartMenu();
+        }
+
+        private Dictionary<string, List<string>> FindBadge()
+        {
+            Console.WriteLine("Badge ID?");
+            string badgeID = Console.ReadLine();
+
+            var badges = _repo.GetBadges();
+
+            var foundBadge = new Dictionary<string, List<string>>();
+
+            
+
+            return foundBadge;
+        }
+
+        private void EditBadge(Dictionary<string, List<string>> badge)
+        {
+            
         }
     }
 }

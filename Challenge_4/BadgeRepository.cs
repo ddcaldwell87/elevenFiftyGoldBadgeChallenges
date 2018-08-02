@@ -9,26 +9,15 @@ namespace Challenge_4
     public class BadgeRepository
     {
         private Dictionary<string, List<string>> _badges = new Dictionary<string, List<string>>();
-        private List<string> _doors = new List<string>();
 
         public void CreateBadge(string badgeID, List<string> doors)
         {
             _badges.Add(badgeID, doors);
         }
 
-        public void AddDoorToList(string door)
-        {
-            _doors.Add(door);
-        }
-
         public Dictionary<string, List<string>> GetBadges()
         {
             return _badges;
-        }
-
-        public List<string> GetDoors()
-        {
-            return _doors;
         }
     }
 }
