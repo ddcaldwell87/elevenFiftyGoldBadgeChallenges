@@ -16,9 +16,19 @@ namespace Challenge_4
             _badges.Add(badgeID, doors);
         }
 
+        public void AddDoorToList(string door)
+        {
+            _doors.Add(door);
+        }
+
         public Dictionary<string, List<string>> GetBadges()
         {
             return _badges;
+        }
+
+        public List<string> GetDoors()
+        {
+            return _doors;
         }
     }
 }

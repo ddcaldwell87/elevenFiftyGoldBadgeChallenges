@@ -22,10 +22,11 @@ namespace Challenge_4
         {
             string badgeID1 = "12345";
             string badgeID2 = "22345";
+            
+            _repo.AddDoorToList("A1");
+            _repo.AddDoorToList("A5");
 
-            var doors = new List<string>();
-            doors.Add("A1");
-            doors.Add("A5");
+            var doors = _repo.GetDoors();
 
             _repo.CreateBadge(badgeID1, doors);
             _repo.CreateBadge(badgeID2, doors);
@@ -82,13 +83,13 @@ namespace Challenge_4
             Console.WriteLine("What is the badge number?");
             string badgeID = Console.ReadLine();
 
-            var doors = new List<string>();
+            var doors = _repo.GetDoors();
 
             while (continueToLoop)
             {
                 Console.WriteLine("Add a door:");
                 string door = Console.ReadLine();
-                doors.Add(door);
+                _repo.AddDoorToList(door);
 
                 Console.WriteLine("Add another door? (y/n)");
                 string answer = Console.ReadLine();
@@ -96,6 +97,8 @@ namespace Challenge_4
                 if (answer != "y")
                     RunStartMenu();
             }
+            Badge badge = new Badge(badgeID, doors);
+            _repo.CreateBadge(badgeID, doors);
         }
 
         private void GetBadges(Dictionary<string, List<string>> badges)

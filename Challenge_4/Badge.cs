@@ -8,11 +8,13 @@ namespace Challenge_4
 {
     public class Badge
     {
-        public Badge(Dictionary<string, List<string>> badges)
+        public Badge(string badgeID, List<string> doors)
         {
-            Badges = badges;
+            BadgeID = badgeID;
+            Doors = doors;
         }
 
-        public Dictionary<string, List<string>> Badges { get; set; }
+        public string BadgeID { get; set; }
+        public List<string> Doors { get; set; }
     }
 }
